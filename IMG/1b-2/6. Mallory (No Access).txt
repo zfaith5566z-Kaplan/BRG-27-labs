@@ -1,0 +1,12 @@
+vboxuser@BRG27-Lab:~$ su - mallory 
+Password: 
+mallory@BRG27-Lab:~$ whoami
+mallory
+mallory@BRG27-Lab:~$ cd /home/shared/
+mallory@BRG27-Lab:/home/shared$ cat project.txt
+cat: project.txt: Permission denied
+mallory@BRG27-Lab:/home/shared$ echo Mallory edit >> project.txt
+-bash: project.txt: Permission denied
+mallory@BRG27-Lab:/home/shared$ ./project.txt
+-bash: ./project.txt: Permission denied
+mallory@BRG27-Lab:/home/shared$ 

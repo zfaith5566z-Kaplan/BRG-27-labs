@@ -1,0 +1,8 @@
+vboxuser@BRG27-Lab:~$ sudo groupadd sharedgroup
+[sudo] password for vboxuser: 
+vboxuser@BRG27-Lab:~$ sudo adduser alice sharedgroup
+info: Adding user `alice' to group `sharedgroup' ...
+vboxuser@BRG27-Lab:~$ sudo adduser bob sharedgroup
+info: Adding user `bob' to group `sharedgroup' ...
+
+sharedgroup:x:1004:alice,bob

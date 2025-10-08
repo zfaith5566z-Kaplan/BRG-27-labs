@@ -1,0 +1,6 @@
+vboxuser@BRG27-Lab:~$ sudo mkdir /home/shared
+vboxuser@BRG27-Lab:~$ sudo chown root: sharedgroup /home/shared
+chown: cannot access 'sharedgroup': No such file or directory
+vboxuser@BRG27-Lab:~$ sudo chown root:sharedgroup /home/shared
+vboxuser@BRG27-Lab:~$ ls -ld /home/shared
+drwxr-xr-x 2 root sharedgroup 4096 Oct  3 07:25 /home/shared

@@ -1,0 +1,26 @@
+vboxuser@BRG27-Lab:~$ su - alice
+Password: 
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+alice@BRG27-Lab:~$ whoami
+alice
+alice@BRG27-Lab:~$ cd /home/shared/
+alice@BRG27-Lab:/home/shared$ cat project.txt
+Hi, ICT171!
+alice@BRG27-Lab:/home/shared$ echo Alice edit >> project.txt
+-bash: project.txt: Permission denied
+alice@BRG27-Lab:/home/shared$ groups alice
+alice : alice sudo users sharedgroup
+alice@BRG27-Lab:/home/shared$ echo "Alice edit" >> project.txt
+-bash: project.txt: Permission denied
+alice@BRG27-Lab:/home/shared$ sudo chown alice /home/shared/project.txt
+[sudo] password for alice: 
+alice@BRG27-Lab:/home/shared$ echo "Alice edit" >> project.txt
+alice@BRG27-Lab:/home/shared$ cat project.txt
+Hi, ICT171!
+Alice edit
+alice@BRG27-Lab:/home/shared$ chmod +x project.txt
+alice@BRG27-Lab:/home/shared$ ./project.txt
+./project.txt: line 1: Hi,: command not found
+./project.txt: line 2: Alice: command not found

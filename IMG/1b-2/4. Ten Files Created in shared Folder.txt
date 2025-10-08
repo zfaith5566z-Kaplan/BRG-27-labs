@@ -1,0 +1,13 @@
+vboxuser@BRG27-Lab:/home/shared$ sudo touch file{1..10}.txt
+vboxuser@BRG27-Lab:/home/shared$ ls -l /home/shared/
+total 0
+-rw-r--r-- 1 root root 0 Oct  3 07:31 file10.txt
+-rw-r--r-- 1 root root 0 Oct  3 07:31 file1.txt
+-rw-r--r-- 1 root root 0 Oct  3 07:31 file2.txt
+-rw-r--r-- 1 root root 0 Oct  3 07:31 file3.txt
+-rw-r--r-- 1 root root 0 Oct  3 07:31 file4.txt
+-rw-r--r-- 1 root root 0 Oct  3 07:31 file5.txt
+-rw-r--r-- 1 root root 0 Oct  3 07:31 file6.txt
+-rw-r--r-- 1 root root 0 Oct  3 07:31 file7.txt
+-rw-r--r-- 1 root root 0 Oct  3 07:31 file8.txt
+-rw-r--r-- 1 root root 0 Oct  3 07:31 file9.txt

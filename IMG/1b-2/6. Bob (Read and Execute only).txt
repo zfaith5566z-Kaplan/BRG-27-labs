@@ -1,0 +1,14 @@
+vboxuser@BRG27-Lab:~$ su - bob 
+Password: 
+bob@BRG27-Lab:~$ whoami
+bob
+bob@BRG27-Lab:~$ cd /home/shared/
+bob@BRG27-Lab:/home/shared$ cat project.txt
+Hi, ICT171!
+Alice edit
+bob@BRG27-Lab:/home/shared$ echo "Bob edit" >> project.txt
+-bash: project.txt: Permission denied
+bob@BRG27-Lab:/home/shared$ ./project.txt
+./project.txt: line 1: Hi,: command not found
+./project.txt: line 2: Alice: command not found
+bob@BRG27-Lab:/home/shared$ 
