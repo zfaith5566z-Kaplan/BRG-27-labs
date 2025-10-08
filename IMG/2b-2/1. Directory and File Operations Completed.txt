@@ -1,0 +1,7 @@
+vboxuser@BRG27-Lab-Updated:~$ mkdir LabFiles
+vboxuser@BRG27-Lab-Updated:~$ echo "This is ICT 171 class" > LabFiles/notes.txt
+vboxuser@BRG27-Lab-Updated:~$ cat LabFiles/notes.txt
+This is ICT 171 class
+vboxuser@BRG27-Lab-Updated:~$ cp LabFiles/notes.txt LabFiles/notes_backup.txt
+vboxuser@BRG27-Lab-Updated:~$ mv LabFiles/notes_backup.txt LabFiles/archived_notes.txt
+vboxuser@BRG27-Lab-Updated:~$ rm LabFiles/archived_notes.txt

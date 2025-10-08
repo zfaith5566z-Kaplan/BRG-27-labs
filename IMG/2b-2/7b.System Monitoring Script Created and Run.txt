@@ -1,0 +1,118 @@
+/home/vboxuser/resource_monitor.sh
+Resource Monitor Started: Mon Oct  6 07:56:35 PM +08 2025
+User: vboxuser
+-----------------------------
+Iteration 1 -----------------------------
+
+TOP (CPU & Process Snapshot):
+top - 19:56:35 up 49 min,  1 user,  load average: 0.09, 0.17, 0.20
+Tasks: 212 total,   1 running, 211 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.0 us,  2.0 sy,  0.0 ni, 94.1 id,  2.0 wa,  0.0 hi,  2.0 si,  0.0 st 
+MiB Mem :   7942.6 total,   5031.7 free,   1301.4 used,   1889.1 buff/cache     
+MiB Swap:      0.0 total,      0.0 free,      0.0 used.   6641.1 avail Mem 
+
+FREE -h (Memory Usage):
+               total        used        free      shared  buff/cache   available
+Mem:           7.8Gi       1.3Gi       4.9Gi        34Mi       1.8Gi       6.5Gi
+Swap:             0B          0B          0B
+
+DF -h (Disk Usage):
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           795M  1.6M  793M   1% /run
+/dev/sda2        20G  8.2G   11G  44% /
+tmpfs           3.9G     0  3.9G   0% /dev/shm
+tmpfs           5.0M  8.0K  5.0M   1% /run/lock
+tmpfs           795M  136K  795M   1% /run/user/1000
+/dev/sr0         51M   51M     0 100% /media/vboxuser/VBox_GAs_7.2.2
+--------------------------------------------
+Iteration 2 -----------------------------
+
+TOP (CPU & Process Snapshot):
+top - 19:56:37 up 49 min,  1 user,  load average: 0.09, 0.17, 0.20
+Tasks: 211 total,   1 running, 210 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  4.3 us,  4.3 sy,  0.0 ni, 87.0 id,  0.0 wa,  0.0 hi,  4.3 si,  0.0 st 
+MiB Mem :   7942.6 total,   5031.4 free,   1301.7 used,   1889.1 buff/cache     
+MiB Swap:      0.0 total,      0.0 free,      0.0 used.   6640.9 avail Mem 
+
+FREE -h (Memory Usage):
+               total        used        free      shared  buff/cache   available
+Mem:           7.8Gi       1.3Gi       4.9Gi        34Mi       1.8Gi       6.5Gi
+Swap:             0B          0B          0B
+
+DF -h (Disk Usage):
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           795M  1.6M  793M   1% /run
+/dev/sda2        20G  8.2G   11G  44% /
+tmpfs           3.9G     0  3.9G   0% /dev/shm
+tmpfs           5.0M  8.0K  5.0M   1% /run/lock
+tmpfs           795M  136K  795M   1% /run/user/1000
+/dev/sr0         51M   51M     0 100% /media/vboxuser/VBox_GAs_7.2.2
+--------------------------------------------
+Iteration 3 -----------------------------
+
+TOP (CPU & Process Snapshot):
+top - 19:56:40 up 49 min,  1 user,  load average: 0.08, 0.17, 0.20
+Tasks: 211 total,   1 running, 210 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  4.8 us,  9.5 sy,  0.0 ni, 85.7 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st 
+MiB Mem :   7942.6 total,   5031.4 free,   1301.7 used,   1889.1 buff/cache     
+MiB Swap:      0.0 total,      0.0 free,      0.0 used.   6640.9 avail Mem 
+
+FREE -h (Memory Usage):
+               total        used        free      shared  buff/cache   available
+Mem:           7.8Gi       1.3Gi       4.9Gi        34Mi       1.8Gi       6.5Gi
+Swap:             0B          0B          0B
+
+DF -h (Disk Usage):
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           795M  1.6M  793M   1% /run
+/dev/sda2        20G  8.2G   11G  44% /
+tmpfs           3.9G     0  3.9G   0% /dev/shm
+tmpfs           5.0M  8.0K  5.0M   1% /run/lock
+tmpfs           795M  136K  795M   1% /run/user/1000
+/dev/sr0         51M   51M     0 100% /media/vboxuser/VBox_GAs_7.2.2
+--------------------------------------------
+Iteration 4 -----------------------------
+
+TOP (CPU & Process Snapshot):
+top - 19:56:42 up 49 min,  1 user,  load average: 0.08, 0.17, 0.20
+Tasks: 211 total,   1 running, 210 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  5.0 us,  0.0 sy,  0.0 ni, 95.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st 
+MiB Mem :   7942.6 total,   5031.2 free,   1301.8 used,   1889.2 buff/cache     
+MiB Swap:      0.0 total,      0.0 free,      0.0 used.   6640.8 avail Mem 
+
+FREE -h (Memory Usage):
+               total        used        free      shared  buff/cache   available
+Mem:           7.8Gi       1.3Gi       4.9Gi        34Mi       1.8Gi       6.5Gi
+Swap:             0B          0B          0B
+
+DF -h (Disk Usage):
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           795M  1.6M  793M   1% /run
+/dev/sda2        20G  8.2G   11G  44% /
+tmpfs           3.9G     0  3.9G   0% /dev/shm
+tmpfs           5.0M  8.0K  5.0M   1% /run/lock
+tmpfs           795M  136K  795M   1% /run/user/1000
+/dev/sr0         51M   51M     0 100% /media/vboxuser/VBox_GAs_7.2.2
+--------------------------------------------
+Iteration 5 -----------------------------
+
+TOP (CPU & Process Snapshot):
+top - 19:56:44 up 49 min,  1 user,  load average: 0.08, 0.17, 0.20
+Tasks: 211 total,   1 running, 210 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  5.0 us,  5.0 sy,  0.0 ni, 90.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st 
+MiB Mem :   7942.6 total,   5031.1 free,   1301.9 used,   1889.2 buff/cache     
+MiB Swap:      0.0 total,      0.0 free,      0.0 used.   6640.7 avail Mem 
+
+FREE -h (Memory Usage):
+               total        used        free      shared  buff/cache   available
+Mem:           7.8Gi       1.3Gi       4.9Gi        34Mi       1.8Gi       6.5Gi
+Swap:             0B          0B          0B
+
+DF -h (Disk Usage):
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           795M  1.6M  793M   1% /run
+/dev/sda2        20G  8.2G   11G  44% /
+tmpfs           3.9G     0  3.9G   0% /dev/shm
+tmpfs           5.0M  8.0K  5.0M   1% /run/lock
+tmpfs           795M  136K  795M   1% /run/user/1000
+/dev/sr0         51M   51M     0 100% /media/vboxuser/VBox_GAs_7.2.2

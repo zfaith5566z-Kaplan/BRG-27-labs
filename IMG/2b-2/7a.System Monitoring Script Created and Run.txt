@@ -1,0 +1,12 @@
+vboxuser@BRG27-Lab-Updated:~$ free -h
+               total        used        free      shared  buff/cache   available
+Mem:           7.8Gi       1.0Gi       5.2Gi        31Mi       1.8Gi       6.7Gi
+Swap:             0B          0B          0B
+vboxuser@BRG27-Lab-Updated:~$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           795M  1.6M  793M   1% /run
+/dev/sda2        20G  8.2G   11G  44% /
+tmpfs           3.9G     0  3.9G   0% /dev/shm
+tmpfs           5.0M  8.0K  5.0M   1% /run/lock
+tmpfs           795M  124K  795M   1% /run/user/1000
+/dev/sr0         51M   51M     0 100% /media/vboxuser/VBox_GAs_7.2.2

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Display current user
+echo "Current user: $(whoami)"
+
+# Iteration loop from 1 to 5
+echo "Looping from 1 to 5:"
+for i in {1..5}; do
+    echo "Iteration $i"
+done
+
+# Prompt for number input
+read -p "Enter a number between 1 and 10: " num
+
+# Input validation and logic
+if [[ "$num" =~ ^[0-9]+$ ]]; then
+    if [ "$num" -ge 1 ] && [ "$num" -le 5 ]; then
+        echo "You entered a low number: $num"
+    elseif [ "$num" -ge 6 ] && [ "$num" -le 10 ]; then
+        echo "You entered a high number: $num"
+    else
+        echo "Number is outside the valid range."
+    if
+else
+    echo "Invalid input. Please enter a numeric value."
+if
