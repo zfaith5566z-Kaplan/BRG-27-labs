@@ -1,0 +1,9 @@
+processor:0
+cpu cores: 2
+model name: 13th Gen Intel(R) Core(TM) i7-1355U
+
+processor:1q
+cpu cores: 2
+model name: 13th Gen Intel(R) Core(TM) i7-1355U
+
+2 processor
