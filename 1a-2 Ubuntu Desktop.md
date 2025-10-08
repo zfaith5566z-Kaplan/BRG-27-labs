@@ -46,7 +46,8 @@ Part 7: Compiling from Source (Optional)
 •	- Adjust permissions with `chmod 777` if needed.
 •	- Compare source and compiled file using `less`.
 
-Deliverables (Screenshots and Output are in another folder
+Deliverables (Screenshots and Output are in another folder)
+
 ✅ 1	GUI Familiarisation Proof	Screenshots of: 
 • Firefox opened and working 
 • LibreOffice with text typed 
