@@ -1,0 +1,212 @@
+Linux Services, SSH, Firewalls & Compression
+
+This lab expands students’ understanding of Linux as a service host. Students will configure Apache, SSH, network settings, firewall rules, user accounts, and use compression tools for transferring files. The activities are collaborative and test basic system administration capabilities.
+Learning Objectives
+•	- Install and configure Apache, SSH server, and firewall (UFW).
+•	- Test web service accessibility over LAN.
+•	- Use nmap to detect open services and ports.
+•	- Use SSH and SCP for remote access and file transfer.
+•	- Create and manage users and understand privilege separation.
+•	- Compress and decompress files using tar and bzip2.
+•	- Troubleshoot VirtualBox VM network conflicts (MAC/IP clash).
+
+Lab Activities
+•	- Install Apache using `sudo apt install apache2` and test `http://127.0.0.1`.
+•	- Install SSH server and Nmap: `sudo apt install openssh-server nmap`.
+•	- Determine IP using `ip a` and visit peer web page in browser.
+•	- Edit index.html using nano/gedit and share unique changes with partner.
+•	- Scan each other's ports using `nmap [IP]` and note open services.
+•	- Remove Apache and rerun `nmap`; reinstall and observe differences.
+•	- Enable UFW with `sudo ufw enable`, allow port 80, and observe service access.
+•	- Attempt `ssh [partner_ip]`, troubleshoot with UFW rules.
+•	- Create a new user: `sudo adduser username` and SSH using `ssh username@ip`.
+•	- Download books from Project Gutenberg using `wget`.
+•	- Create directory `books`, move files, create tar: `tar cf books.tar books`.
+•	- Compress with `bzip2 books.tar`, decompress with `bunzip2`, extract with `tar -xvf`.
+
+Activity: Linux Services, Networking, and Secure File Transfers
+
+📘 Objective
+
+Set up and explore Apache, SSH, and UFW firewall services in Ubuntu, perform port scanning and file transfer over SSH, and practice compression and decompression using tar, bzip2, and scp.
+
+📦 Deliverables
+
+#	Deliverable	Description
+
+✅ 1	Apache Web Server Installed	Screenshot or terminal output of sudo apt install apache2 and Apache running at http://127.0.0.1.
+
+✅ 2	Modified index.html Page	Edited /var/www/html/index.html and screenshot showing personalized content when visited via browser or neighbor’s IP.
+
+✅ 3	IP Address Identified and Shared	Output of ip a showing local and loopback IPs. Partner's IP exchanged and used to access each other's webserver.
+
+✅ 4	Nmap Port Scan Results	Output screenshot of nmap [partner’s IP] showing open ports before and after Apache is removed.
+
+✅ 5	Firewall (UFW) Status and Rules	Outputs of: 
+• sudo ufw status verbose before and after enabling 
+• Port 80 allowed and verified via partner’s Nmap scan
+
+As the cloned VM does not have nmap installed, ran through the installer.
+
+Sudo apt install nmap 
+
+Port 80 allowed and verified via partner’s Nmap scan
+a. Install Apache (if not already installed)
+sudo apt update
+sudo apt install apache2
+This automatically opens port 80 by starting the webserver.
+
+b. Start and Enable Apache Service
+sudo systemctl start apache2
+sudo systemctl enable apache2
+
+sudo systemctl status apache2 (Expected outcome: active running)
+
+c. Allow Port 80 via Firewall
+sudo ufw allow 80/tcp
+sudo ufw status verbose
+
+d. Confirm from Partner VM via nmap
+From your partner’s VM:
+nmap 192.168.1.103
+Expected output:
+PORT	STATE 	SERVICE
+80/tcp	open	http
+
+
+✅ 6	SSH Enabled and Tested	Output of successful login via ssh to partner’s machine using both default and explicitly declared usernames.
+
+✅ 7	New User Created and Verified	Command and confirmation of user added via sudo adduser, with /etc/passwd showing new entry.
+a. Step 1: Add a New User
+sudo adduser newusername 
+You'll be prompted to set a password and optionally fill in user details
+(Full Name, Room Number, etc.).
+
+b. Step 2: Confirm User Entry in /etc/passwd
+grep newuser171 /etc/passwd 
+Expected Output:
+newusername:x:1001:1001:,,,:/home/newuser171:/bin/bash 
+This confirms:
+•	newusername is added
+•	UID and GID are assigned
+•	Home directory is /home/newusername
+
+
+
+✅ 8	Compression and Decompression Tested	Screenshots of: 
+• tar cf, bzip2, bunzip2, and tar -xvf 
+• Output of ls -la showing archive size comparison
+a. Create a Sample Directory
+
+mkdir ict171
+echo "Sample file A" > ict171/fileA.txt
+echo "Sample file B" > ict171/fileB.txt
+
+b. Archive with tar cf
+
+tar cf ict171.tar ict171/
+ls -la ict171.tar
+
+c. Compress with bzip2 but software was not installed.
+
+Sudo apt install bzip2
+bzip2 testdir.tar
+This creates testdir.tar.bz2 and removes the original .tar.
+ls -la testdir.tar.bz2
+Compare size with .tar
+
+d. Decompress with bunzip2
+bunzip2 testdir.tar.bz2 
+Restores testdir.tar
+ls -la testdir.tar
+
+e. Extract with tar -xvf
+tar -xvf testdir.tar 
+
+
+
+
+✅ 9	SCP File Transfers Between Machines	Output or screenshots showing successful use of scp to copy: 
+• A file 
+• A directory (bonus)
+
+✅ 10	/etc/hosts File Modified	Screenshot showing added custom hostname 
+(e.g., 8.8.8.8 GoogleEpicDNS) and successful ping GoogleEpicDNS.
+
+✅ 11	nslookup and whois Commands Run	Output of: 
+• nslookup google.com 
+• whois google.com (after installing whois)
+
+✅ 12	Public vs Private IP Comparison	Screenshot of ip a and result from
+https://whatismyipaddress.com, with short explanation.
+
+“ip a” displays the local ip address using the network while 
+whatismyipaddress.com shows the public IP using for internet-facing traffic.
+There are differences between them due to NAT(Network Address Translation).
+
+✅ 13	Hardware Info Extracted	Output from: 
+• lsusb 
+• lspci 
+• less /proc/cpuinfo with CPU core count identified.
+
+✅ 14	Redirected Output Tested	Output file from: lsusb > output_of_lsusb, viewed using cat and less. File size shown using ls -la.
+
+✅ 15	Extension Challenge 1 Completed	SSH into partner’s machine and create a file on their desktop: Hi_[partner’s name].
+
+Objective:
+Demonstrate successful SSH login to a partner machine and creation of a file named Hi_[partner’s name] on their desktop.
+
+Step 1: SSH into Partner’s Machine
+Command:
+ssh username@192.168.1.102
+
+Replace username and 192.168.1.102 with your partner’s actual credentials.
+
+Step 2: Navigate to Desktop Directory
+Command:
+cd ~/Desktop
+
+Step 3: Create the File
+Command:
+touch Hi_"username"
+
+✅ Challenges encountered
+*To clone the current machine.
+
+VBoxManage clonevm "BRG_27_Lab" --name "BRG_27_Lab_Clone" –register
+
+As NAT does not allow inbound connections from other devices or VMs on your host.
+To access the Apache server from a neighbor VM, I will need to switch to a Bridged Adapter. 
+
+Step-by-Step: Enable Bridged Networking
+1. Power off your Ubuntu VM.
+2. In VirtualBox Manager: Select your VM → Settings → Network
+3. Under Adapter 1: Check Enable Network Adapter
+4. Set Attached to: Bridged Adapter
+5. Click OK and start the VM.
+
+
+Reflection Questions
+•	- What’s the role of a firewall in managing services?
+•	- How did SSH access deepen your understanding of Linux as a server?
+•	- Why is file compression important in server contexts?
+•	- How does user privilege management help secure systems?
+
+A firewall plays a critical role in overseeing and regulating data flow, 
+managing only approved data and shielding harmful or filtering data. It acts as 
+a gatekeeper, allowing filtered authorized services (like SSH or HTTP) to 
+communicate while shielding away harmful or unnecessary connections. This ensures
+that only essential ports are exposed, reducing the attack surface and enhancing 
+system security.
+
+SSH access improved my understanding of Linux as a server by providing hands-on practice with core server management concepts such as remote command-line administration. It revealed how services are managed without any lead to tag with, how permissions and configurations are enforced remotely, and how to practice the application in a reliable and secure manner.2
+
+File compression is crucial in optimizing storage for server context, eliminating the wastage for bandwidth usage, and boosting the data transfers speed. Whether archiving logs, packaging backups, or deploying software, compression ensures efficient resource utilization. It is important in environments with limited disk space or high-volume data exchange.3
+
+User privilege management secures systems by enforcing role-based access control. By assigning appropriate permissions, it not only prevents unauthorized actions, it is able to minimize the damage from compromised account. ACLs helps maintain the least privilege, which is vital to secure system design.4
+
+References
+1. Tailscale. (2024). SSH security best practices: Protecting your remote access infrastructure. Tailscale. https://tailscale.com/learn/ssh-security-best-practices-protecting-your-remote-access-infrastructure
+2. SSH Communications Security. (n.d.). SSH command. SSH Academy https://www.ssh.com/academy/ssh/command#:~:text=The%20ssh%20command%20provides%20a,SSH%20from%20a%20remote%20location.
+3. MITRE ATT&CK. (n.d.). File and directory permissions modification. MITRE https://attack.mitre.org/techniques/T1222/ 
+4. Netwrix. (2025, August 26). How to manage file system ACLs with PowerShell scripts. Netwrix Blog https://blog.netwrix.com/2018/04/18/how-to-manage-file-system-acls-with-powershell-scripts/
