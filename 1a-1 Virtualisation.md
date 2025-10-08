@@ -44,6 +44,7 @@ Setup Instructions
 
 ✅ 9	(Alternate) WSL (Windows Subsystem for Linux) Installed	If VirtualBox isn't used, evidence of Ubuntu running in WSL, including installation steps via PowerShell and successful launch.
 ![9a](https://github.com/user-attachments/assets/31ae42c8-0839-4b6d-8e36-7d8366e05a5c)
+
 Step 1: Install Ubuntu via PowerShell
 Open PowerShell as Administrator and run:
 wsl --install -d Ubuntu
