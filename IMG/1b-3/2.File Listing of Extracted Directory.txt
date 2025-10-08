@@ -1,0 +1,7 @@
+vboxuser@BRG27-Lab-Updated:~/Downloads$ ls -l
+total 24
+-rw-r--r-- 1 vboxuser vboxuser    94 Jul  7 15:18 frankenstein.txt
+-rw-rw-r-- 1 vboxuser vboxuser 10240 Oct  5 09:36 Gutenberg.tar
+-rw-r--r-- 1 vboxuser vboxuser    16 Jul  7 15:18 moby.txt
+-rw-r--r-- 1 vboxuser vboxuser    52 Jul  7 15:18 twocities.txt
+vboxuser@BRG27-Lab-Updated:~/Downloads$ 

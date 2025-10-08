@@ -1,0 +1,5 @@
+1. 0
+2. Cannot find
+3. Cannot find
+4. 2025-07-07+15:18:55.9473588000 ./frankenstein.txt
+5. Cannot find

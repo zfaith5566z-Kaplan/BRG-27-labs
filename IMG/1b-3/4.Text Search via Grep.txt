@@ -1,0 +1,4 @@
+vboxuser@BRG27-Lab-Updated:~/Downloads$ grep -r Ishmael .
+grep: ./Gutenberg.tar: binary file matches
+./moby.txt:Call me Ishmael.
+vboxuser@BRG27-Lab-Updated:~/Downloads$ 

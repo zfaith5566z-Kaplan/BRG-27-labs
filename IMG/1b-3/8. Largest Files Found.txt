@@ -1,0 +1,8 @@
+vboxuser@BRG27-Lab-Updated:~/Downloads$ du -a /home/vboxuser/Downloads | sort -n -r | head -n 20
+28	/home/vboxuser/Downloads
+12	/home/vboxuser/Downloads/Gutenberg.tar
+4	/home/vboxuser/Downloads/twocities.txt
+4	/home/vboxuser/Downloads/moby.txt
+4	/home/vboxuser/Downloads/frankenstein.txt
+
+

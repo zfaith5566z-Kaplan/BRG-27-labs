@@ -1,0 +1,13 @@
+vboxuser@BRG27-Lab-Updated:~/Downloads$ sed -e 's/\s/\n/g' < twocities.txt
+It
+was
+the
+best
+of
+times,
+it
+was
+the
+worst
+of
+times.vboxuser@BRG27-Lab-Updated:~/Downloads$ 

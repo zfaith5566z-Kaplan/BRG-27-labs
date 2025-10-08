@@ -1,0 +1,9 @@
+vboxuser@BRG27-Lab-Updated:~$ /home/vboxuser/Downloads
+bash: /home/vboxuser/Downloads: Is a directory
+vboxuser@BRG27-Lab-Updated:~$ cd /home/vboxuser/Downloads
+vboxuser@BRG27-Lab-Updated:~/Downloads$ bunzip2 Gutenberg.tar.bz2
+vboxuser@BRG27-Lab-Updated:~/Downloads$ tar -xvf Gutenberg.tar
+moby.txt
+twocities.txt
+frankenstein.txt
+vboxuser@BRG27-Lab-Updated:~/Downloads$ 
