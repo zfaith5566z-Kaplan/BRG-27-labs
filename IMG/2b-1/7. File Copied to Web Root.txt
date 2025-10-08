@@ -1,0 +1,2 @@
+ubuntu@ip-172-31-44-230:~$ ls -l /var/www/html/EECS-2009-28.pdf
+-rw-r--r-- 1 root root 602902 Oct  7 17:50 /var/www/html/EECS-2009-28.pdf
