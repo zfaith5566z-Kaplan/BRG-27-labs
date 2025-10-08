@@ -1,0 +1,24 @@
+ubuntu@BRG27-Lab-Updated:~$ cd Documents
+ubuntu@BRG27-Lab-Updated:~/Documents$ cd
+ubuntu@BRG27-Lab-Updated:~$ mkdir /home/ubuntu/backup
+ubuntu@BRG27-Lab-Updated:~$ ls -l
+total 8
+drwxrwxr-x 2 ubuntu ubuntu 4096 Oct  7 01:10 backup
+drwxrwxr-x 4 ubuntu ubuntu 4096 Oct  7 00:54 Documents
+ubuntu@BRG27-Lab-Updated:~$ sudo nano usescript
+[sudo] password for ubuntu: 
+ubuntu is not in the sudoers file.
+ubuntu@BRG27-Lab-Updated:~$ nano usescript
+ubuntu@BRG27-Lab-Updated:~$ chmod 777 /home/ubuntu/testscript
+chmod: cannot access '/home/ubuntu/testscript': No such file or directory
+ubuntu@BRG27-Lab-Updated:~$ chmod 777 /home/ubuntu/usescript
+ubuntu@BRG27-Lab-Updated:~$ ls -l /home/ubuntu/usescript 
+-rwxrwxrwx 1 ubuntu ubuntu 119 Oct  7 01:13 /home/ubuntu/usescript
+ubuntu@BRG27-Lab-Updated:~$ .usescript
+.usescript: command not found
+ubuntu@BRG27-Lab-Updated:~$ ./usescript
+Starting recursive copy...
+Copy complete.
+ubuntu@BRG27-Lab-Updated:~$ ls /home/ubuntu/backup/Documents
+ICTFile1  ICTFile2
+ubuntu@BRG27-Lab-Updated:~$ 

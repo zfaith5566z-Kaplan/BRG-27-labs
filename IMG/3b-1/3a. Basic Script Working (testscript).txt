@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "Starting recursive copy..."
+cp -r /home/ubuntu/Documents /home/ubuntu/backup/
+echo "Copy complete."

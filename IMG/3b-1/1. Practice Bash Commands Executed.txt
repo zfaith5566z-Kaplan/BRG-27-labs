@@ -1,0 +1,83 @@
+vboxuser@BRG27-Lab-Updated:~$ nano arithmetic_demo.sh
+vboxuser@BRG27-Lab-Updated:~$ ./arithmetic_demo.sh
+bash: ./arithmetic_demo.sh: Permission denied
+vboxuser@BRG27-Lab-Updated:~$ sudo nano arithmetic_demo.sh
+[sudo] password for vboxuser: 
+vboxuser@BRG27-Lab-Updated:~$ sudo nano arithmetic_demo.sh
+vboxuser@BRG27-Lab-Updated:~$ ./arithmetic_demo.sh > arithmetic_output.txt
+bash: ./arithmetic_demo.sh: Permission denied
+vboxuser@BRG27-Lab-Updated:~$ sudo nano arithmetic_demo.sh
+vboxuser@BRG27-Lab-Updated:~$ ^C
+vboxuser@BRG27-Lab-Updated:~$ ls -l arithmetic_demo.sh
+-rw-rw-r-- 1 vboxuser vboxuser 2718 Oct  7 00:24 arithmetic_demo.sh
+vboxuser@BRG27-Lab-Updated:~$ chmod +x arithmetic_demo.sh
+vboxuser@BRG27-Lab-Updated:~$ ls -l arithmetic_demo.sh
+-rwxrwxr-x 1 vboxuser vboxuser 2718 Oct  7 00:24 arithmetic_demo.sh
+vboxuser@BRG27-Lab-Updated:~$ ./arithmetic_demo.sh
+=== BASH ARITHMETIC DEMONSTRATION ===
+
+1. ECHO AND VARIABLES:
+Student Name: Alice
+Age: 25
+Course: Linux Administration
+Hello, my name is Alice and I'm 25 years old.
+I'm currently learning Linux Administration.
+
+2. ARITHMETIC OPERATIONS WITH (( )):
+Initial values: num1=15, num2=7
+Addition: 15 + 7 = 22
+Subtraction: 15 - 7 = 8
+Multiplication: 15 * 7 = 105
+Division: 15 / 7 = 2 (integer division)
+Modulus: 15 % 7 = 1
+Power: 15 squared = 225
+After increment: num1++ = 16
+After decrement: num2-- = 6
+After compound assignment: num1 += 5 = 21
+After compound assignment: num2 *= 3 = 18
+
+3. FOR LOOP SUMMATION:
+Calculating sum of numbers from 1 to 10:
+  Adding 1 -> Current sum: 1
+  Adding 2 -> Current sum: 3
+  Adding 3 -> Current sum: 6
+  Adding 4 -> Current sum: 10
+  Adding 5 -> Current sum: 15
+  Adding 6 -> Current sum: 21
+  Adding 7 -> Current sum: 28
+  Adding 8 -> Current sum: 36
+  Adding 9 -> Current sum: 45
+  Adding 10 -> Current sum: 55
+Final sum of 1 to 10: 55
+
+Calculating sum of even numbers from 1 to 20:
+  Adding even number 2 -> Current even sum: 2
+  Adding even number 4 -> Current even sum: 6
+  Adding even number 6 -> Current even sum: 12
+  Adding even number 8 -> Current even sum: 20
+  Adding even number 10 -> Current even sum: 30
+  Adding even number 12 -> Current even sum: 42
+  Adding even number 14 -> Current even sum: 56
+  Adding even number 16 -> Current even sum: 72
+  Adding even number 18 -> Current even sum: 90
+  Adding even number 20 -> Current even sum: 110
+Final sum of even numbers (1-20): 110
+
+Calculating sum using array values:
+Array elements: 3 7 12 5 9 15
+  Adding 3 -> Current array sum: 3
+  Adding 7 -> Current array sum: 10
+  Adding 12 -> Current array sum: 22
+  Adding 5 -> Current array sum: 27
+  Adding 9 -> Current array sum: 36
+  Adding 15 -> Current array sum: 51
+Final array sum: 51
+
+4. ADVANCED ARITHMETIC:
+Array: 3 7 12 5 9 15
+Sum: 51, Count: 6, Average: 8
+
+Fibonacci sequence (first 8 numbers):
+Fibonacci: 0 1 1 2 3 5 8 13 
+
+=== SCRIPT COMPLETED ===

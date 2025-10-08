@@ -1,0 +1,16 @@
+vboxuser@BRG27-Lab-Updated:~$ sudo mv ~/usescript /usr/bin/usescript
+mv: cannot stat '/home/vboxuser/usescript': No such file or directory
+vboxuser@BRG27-Lab-Updated:~$ su - ubuntu
+Password: 
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@BRG27-Lab-Updated:~$ sudo mv ~/usescript /usr/bin/usescript
+[sudo] password for ubuntu: 
+ubuntu@BRG27-Lab-Updated:~$ sudo chown root:root /usr/bin/usescript
+ubuntu@BRG27-Lab-Updated:~$ ls -l /usr/bin/usescript
+-rwxrwxrwx 1 root root 119 Oct  7 01:13 /usr/bin/usescript
+ubuntu@BRG27-Lab-Updated:~$ usescript
+Starting recursive copy...
+Copy complete.
+
