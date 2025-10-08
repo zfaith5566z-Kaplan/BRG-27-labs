@@ -1,0 +1,36 @@
+ubuntu@ip-172-31-44-230:~$ certbot plugins
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+* apache
+Description: Apache Web Server plugin
+Interfaces: Authenticator, Installer, Plugin
+Entry point: EntryPoint(name='apache',
+value='certbot_apache._internal.entrypoint:ENTRYPOINT', group='certbot.plugins')
+
+* nginx
+Description: Nginx Web Server plugin
+Interfaces: Authenticator, Installer, Plugin
+Entry point: EntryPoint(name='nginx',
+value='certbot_nginx._internal.configurator:NginxConfigurator',
+group='certbot.plugins')
+
+* standalone
+Description: Runs an HTTP server locally which serves the necessary validation
+files under the /.well-known/acme-challenge/ request path. Suitable if there is
+no HTTP server already running. HTTP challenge only (wildcards not supported).
+Interfaces: Authenticator, Plugin
+Entry point: EntryPoint(name='standalone',
+value='certbot._internal.plugins.standalone:Authenticator',
+group='certbot.plugins')
+
+* webroot
+Description: Saves the necessary validation files to a
+.well-known/acme-challenge/ directory within the nominated webroot path. A
+separate HTTP server must be running and serving files from the webroot path.
+HTTP challenge only (wildcards not supported).
+Interfaces: Authenticator, Plugin
+Entry point: EntryPoint(name='webroot',
+value='certbot._internal.plugins.webroot:Authenticator',
+group='certbot.plugins')
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ubuntu@ip-172-31-44-230:~$ 
