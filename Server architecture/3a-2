@@ -1,0 +1,79 @@
+Enabling HTTPS with Let's Encrypt & Certbot
+
+This lab builds upon the previous week's domain configuration exercise by guiding students through obtaining and enabling HTTPS using a free TLS certificate from Let’s Encrypt via Certbot. Students will secure their Apache web server, verify certificate installation, and understand the principles of secure communications online.
+Learning Objectives
+•	- Understand the role of TLS/SSL certificates in web security.
+•	- Validate DNS and Apache web server configuration.
+•	- Install and run Certbot to obtain a TLS certificate.
+•	- Enable HTTPS on an Apache server with Let’s Encrypt.
+•	- Test secure connections and inspect certificate metadata.
+
+Pre-Requisites Checklist
+•	- A domain name pointing to your server’s public IP (A record).
+•	- Apache installed and running: `sudo apt install apache2`.
+•	- Firewall allows ports 22 (SSH), 80 (HTTP), 443 (HTTPS).
+•	- Can access server via: `ssh -i key.pem ubuntu@yourdomain.com`.
+•	- Can retrieve page via: `wget http://yourdomain.com` or browser.
+
+Steps to Enable HTTPS Using Let’s Encrypt
+•	- Visit https://certbot.eff.org/.
+•	- Choose Apache and your OS (e.g., Ubuntu via Snap).
+•	- Follow the Certbot instructions to install and run Certbot.
+•	- Example command: `sudo snap install core; sudo snap refresh core; sudo snap install --classic certbot`.
+•	- Create a symlink (if needed): `sudo ln -s /snap/bin/certbot /usr/bin/certbot`.
+•	- Run: `sudo certbot --apache` and follow the prompts.
+•	- Test in browser: visit `https://yourdomain.com` and look for the lock icon.
+•	- Click the lock icon to view certificate details (issuer, expiry, etc.).
+
+Common Troubleshooting Tips
+•	- DNS not propagating: Wait a few minutes to a few hours.
+•	- Apache not serving HTTP: Restart with `sudo systemctl restart apache2`.
+•	- Firewall not open: Check cloud provider security group or `ufw status`.
+•	- Certbot command fails: Review error log output or run with `--debug` flag.
+
+Reflection Questions
+•	- Why is HTTPS important for modern web applications?
+•	- What entity issued your site’s TLS certificate?
+•	- How long is your certificate valid for, and how can it be renewed?
+•	- What happens if a certificate expires and is not renewed?
+•	- Why does Let’s Encrypt require port 80 or 443 to be open for verification?
+
+•	HTTPS is important as it provides these three key things which are encryption, integrity and authentication. 
+E: No one can eavesdrop on the communication
+I: No one can alter the data in transit
+A: Users can ensure they are talking to my server and not a scammer. It is the baseline for user safety and SEO.
+
+•	My site's TLS certificate was issued by Let's Encrypt. They offer free, automated certificates, which is innovative for making the web secure for everyone.
+•	The certificate is valid for 90 days. This short lifespan is a security feature to limit the damage of a compromised key. It can be renewed manually with certbot renew, but the real power is automating this with a cron job, which certbot can even set up for you.
+•	If a certificate expires, modern browsers will prevent users from accessing the site, displaying a stark security warning that will destroy user trust and effectively take the site offline.
+•	Let's Encrypt requires port 80 or 443 to be open for the ACME protocol verification challenge. It needs to "prove" to their servers that I actually control the domain I'm requesting a certificate for. It does this by placing a temporary file on my web server that their validation server can retrieve.
+•	Potential Problems & Reflections:
+The 90-day validity is a double-edged sword. Automation is mandatory. I can easily see a scenario where a cron job for renewal fails silently (e.g., due to a script error or a full disk), and I only find out when the certificate expires and users start complaining. Another problem is the initial verification failing if you're behind a firewall that blocks port 80. You'd have to use a DNS-based challenge, which adds another layer of complexity. This process really drives home the concept of "trust" on the internet and how it's technically enforced.
+
+🟢 Activity: Digital Certificate Setup with Let’s Encrypt (HTTPS on Apache)
+📘 Learning Outcome:
+Secure a cloud-hosted web service using TLS encryption by obtaining and installing a free digital certificate from Let's Encrypt via Certbot.
+
+📦 Deliverables
+#	Deliverable	Description
+✅ 1	Pre-Condition Verified: Domain Points to Server	Show that the domain name is linked via DNS A record to the VM and accessible via http://yourdomain.com.
+
+✅ 2	Certbot Installed via Snap	Confirm installation of Certbot using the Snap package manager. Command: sudo snap install --classic certbot
+
+✅ 3	Certificate Successfully Issued	Output of sudo certbot --apache showing that Let’s Encrypt issued a certificate for your domain.
+
+✅ 4	HTTPS Enabled on Apache	Apache has been reconfigured to support HTTPS, typically through Certbot’s automation.
+
+✅ 5	Browser Lock Icon (Secure Connection)	Screenshot of your site loaded via https://yourdomain.com with a padlock icon in the address bar.
+
+✅ 6	View Certificate Issuer	Screenshot of browser certificate info showing that the issuer is Let's Encrypt.
+
+✅ 7	Certbot Auto-Renewal Dry Run Successful	Output of sudo certbot renew --dry-run showing “Congratulations, all renewals succeeded.”
+
+✅ 8	(Optional) Cron Job or System Timer Check	Verify certbot auto-renewal is scheduled (via systemctl list-timers or /etc/cron.d/certbot).
+
+✅ 9	(Optional) HTTPS Redirect Enabled	Confirm that HTTP (http://) traffic is automatically redirected to HTTPS.
+
+✅ 10	(Bonus) Test Expired Certificate (Optional)	Manually simulate or describe what happens if renewal is not performed and certificate expires.
+
+
