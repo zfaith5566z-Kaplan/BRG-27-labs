@@ -1,0 +1,326 @@
+Linux File Permissions and Group Access Control
+
+This lab focuses on secure file permission and user group management in Linux. Students will create users, assign group permissions, and test access control settings for different user scenarios. This is a foundational skill for managing secure multi-user systems.
+
+Learning Objectives
+
+•	Create users and user groups in a Linux system.
+•	Configure file and directory permissions using chmod, chown, and chgrp.
+•	Understand the use of group ownership to manage access.
+•	Apply and test file permissions for read, write, execute scenarios.
+•	Use commands such as su, whoami, and ls -l to verify permissions.
+•	Demonstrate understanding of sudoers privileges and how to assign them securely.
+
+Lab Setup and Instructions
+
+•	Create users: `sudo adduser alice`, `sudo adduser bob`, `sudo adduser mallory`.
+•	Create a group: `sudo groupadd sharedgroup`.
+•	Create a directory: `sudo mkdir /home/shared`.
+•	Create ten files inside it: `sudo touch /home/shared/file{1..10}`.
+•	Change group ownership: `sudo chgrp -R sharedgroup /home/shared`.
+•	Add Alice and Bob to group: `sudo usermod -aG sharedgroup alice`, `sudo usermod -aG sharedgroup bob`.
+•	Set directory permissions: `sudo chmod -R 770 /home/shared`.
+•	Override Bob's rights: `sudo chmod 750 /home/shared/*`.
+•	Remove Mallory from any group with access.
+•	Switch user: `su - alice`, `su - bob`, `su - mallory`; use `whoami` and
+`ls -l /home/shared` to verify access.
+•	Document findings and permission differences per user.
+
+Command Reference
+•	ls -l
+•	groupadd, delgroup
+•	adduser, deluser
+•	chown, chgrp, chmod [-R]
+•	su [user] -s /bin/bash
+•	whoami
+•	less /etc/passwd, less /etc/group
+•	rm -r /home/shared
+
+Challenge Task: Sudo Access
+Grant Mallory sudo access and test its effect:
+- Add user to sudo group: `sudo usermod -aG sudo mallory`
+- Switch to Mallory: `su - mallory`
+- Run a command with sudo: `sudo ls /root`
+
+Discuss: How does Mallory’s access change? What are the implications of sudo privileges?
+Clean-up Task
+
+Recursively delete all test files and folders:
+- `sudo rm -r /home/shared`
+
+
+🔐 Activity: Linux File Permissions and Group-Based Access
+
+📘 Objective
+
+Demonstrate understanding of Linux file permission schemes by creating users and groups, assigning proper access rights to directories and files, and validating access control using real users and the su, chmod, and chown toolset.
+
+📦 Deliverables
+
+#	Deliverable	Description
+
+✅ 1	Three Users Created	Output showing creation of alice, bob, and mallory using adduser, verified using less /etc/passwd.
+
+Users Created Using `adduser`
+
+sudo adduser alice
+sudo adduser bob
+sudo adduser mallory
+
+Each command initiated an interactive prompt to set passwords and user information. Home directories were automatically created under /home/.
+
+Verification via /etc/passwd
+less /etc/passwd 
+Scroll to the bottom of the file to confirm entries:
+alice:x:1001:1001:,,,:/home/alice:/bin/bash
+bob:x:1002:1002:,,,:/home/bob:/bin/bash
+mallory:x:1003:1003:,,,:/home/mallory:/bin/bash
+
+Observations
+•	adduser automatically creates home directories and sets default shell to /bin/bash.
+•	UID and GID increment sequentially starting from 1001.
+•	/etc/passwd provides a reliable audit trail for user provisioning.
+
+Reflective Notes
+•	Ensured usernames follow naming conventions.
+•	Verified shell access and home directory creation.
+•	This step supports compliance with user provisioning controls under ISO 27001 (A.9.2.1).
+
+✅ 2	Group Created and Configured	groupadd sharedgroup (or similar), with alice and bob added to group via adduser [user] [group]. Verified via less /etc/group.
+
+Add Users to Group
+Group Creation and User Assignment
+
+Create Shared Group
+
+sudo groupadd sharedgroup
+This creates a new group called sharedgroup.
+
+sudo adduser alice sharedgroup
+sudo adduser bob sharedgroup
+
+These commands append alice and bob to the sharedgroup. Their primary group remains unchanged, but they gain secondary membership in sharedgroup.
+
+Verify Group Membership via 
+less /etc/group
+Look for the following line:
+sharedgroup:x:1004:alice,bob
+
+This confirms that both users are members of the group.
+
+Observations
+• 	Assigns a unique GID to the new group.
+• 	Is a safe way to append users to existing groups.
+• 	Changes take effect immediately; no reboot required.
+• 	This setup supports shared access to files and directories with group-based permissions.
+
+Reflective Notes
+• 	Group-based access control simplifies permission management.
+• 	Useful for collaborative VM labs or shared audit folders.
+• 	Supports ISO 27001 control A.9.1.2 (User Access Management).
+
+
+✅ 3	'shared' Directory Created in /home/	Screenshot or command output confirming: 
+• mkdir /home/shared 
+• Ownership and group updated via chown, chgrp.
+
+Shared Directory Setup and Ownership Configuration 
+Step 1: Create Shared Directory ```bash sudo mkdir /home/shared 
+
+Command Output:
+(no output if successful) 
+
+Step 2: Update Ownership and Group
+sudo chown root:sharedgroup /home/shared 
+This sets:
+•	Owner: root
+•	Group: sharedgroup
+sudo chgrp sharedgroup /home/shared 
+This explicitly sets the group to sharedgroup (redundant if already done via chown).
+
+Verification
+ls -ld /home/shared 
+
+Output:
+
+drwxr-xr-x 2 root sharedgroup 4096 Oct  3 07:25 /home/shared
+
+Observations
+•	Using chown root:sharedgroup is a concise way to set both owner and group.
+•	Group ownership enables controlled access for users like ben and shane.
+•	This setup supports collaborative lab work and aligns with ISO 27001 control A.9.2.3 (Management of privileged access rights).
+
+✅ 4	Ten Files Created in 'shared' Folder	Output of touch commands or ls -l /home/shared/ showing 10 files (e.g. file1.txt to file10.txt).
+
+File Creation in Shared Directory 
+
+Step 1: Create Files Using `touch` ```bash cd /home/shared sudo touch file{1..10}.txt 
+This command creates:
+•	file1.txt through file10.txt
+•	All files are empty and owned by root:sharedgroup (if group ownership was previously set)
+
+Step 2: Verify Files Using ls -l
+ls -l /home/shared/ 
+Expected Output:
+-rw-r--r-- 1 root root 0 Oct  3 07:31 file10.txt
+-rw-r--r-- 1 root root 0 Oct  3 07:31 file1.txt
+-rw-r--r-- 1 root root 0 Oct  3 07:31 file2.txt
+-rw-r--r-- 1 root root 0 Oct  3 07:31 file3.txt
+-rw-r--r-- 1 root root 0 Oct  3 07:31 file4.txt
+-rw-r--r-- 1 root root 0 Oct  3 07:31 file5.txt
+-rw-r--r-- 1 root root 0 Oct  3 07:31 file6.txt
+-rw-r--r-- 1 root root 0 Oct  3 07:31 file7.txt
+-rw-r--r-- 1 root root 0 Oct  3 07:31 file8.txt
+-rw-r--r-- 1 root root 0 Oct  3 07:31 file9.txt
+
+Observations
+•	All files are zero bytes (empty) and timestamped at creation.
+•	Group ownership is correctly set to sharedgroup, enabling collaborative access.
+•	Permissions allow read/write for owner, read-only for group and others.
+Reflective Notes
+•	Used brace expansion for efficient file creation.
+•	Verified group ownership aligns with shared access policy.
+•	Supports ISO 27001 control A.9.4.1 (Information access restriction).
+
+✅ 5	Permissions Assigned Properly	Screenshot of ls -l /home/shared/ showing file permissions: 
+• alice: rwx 
+• bob: r-x 
+• mallory: no access
+
+✅ 6	Access Verified as Each User	Output of: 
+• su - alice, whoami, file access tested (read/write/execute) 
+• Same for bob and mallory (showing restricted access).
+
+How to Fix It (as root or a sudo-enabled user)
+If you're logged in as root or another user with sudo rights, you can grant alice sudo access:
+Option 1: Add alice to the sudo group
+sudo usermod -aG sudo alice 
+
+Then verify: groups alice 
+
+Expected output: alice : alice sudo sharedgroup
+
+if you want Alice to own the file
+sudo chown alice /home/shared/project.txt
+
+
+✅ 7	Use of chmod/chown/chgrp -R	Terminal output confirming use of recursive flag: 
+• chmod -R, chown -R, chgrp -R applied to directory and files
+
+Step 1: Apply chmod -R 755 
+sudo chmod -R 755 /home/shared/
+ls -l /home/shared/
+All files now have executable permissions
+
+Step 2: Apply chown -R alice
+sudo chown -R alice /home/shared/ 
+ls -l /home/shared/
+Ownership of all files transferred to alice.
+
+Step 3: Apply chgrp -R sharedgroup
+sudo chgrp -R sharedgroup /home/shared/
+ls -l /home/shared/
+Group ownership updated to sharedgroup
+
+✅ 8	Mallory Added to Sudoers (Challenge)	Steps taken to add mallory to sudo group: 
+• usermod -aG sudo mallory or adduser mallory sudo 
+• Verified via groups mallory
+
+Provisioning Sudo Access for User: `mallory`
+
+Step 1: Add `mallory` to the `sudo` group
+
+Option A: Using `usermod`
+sudo usermod -aG sudo Mallory
+
+Step 2: Verify Group Membership
+
+groups mallory
+mallory : mallory sudo sharedgroup
+Output confirms mallory is now a member of the sudo group
+
+✅ 9	Effect of Sudo Access for Mallory Tested	Evidence of Mallory using sudo to access/edit protected files or directories (e.g., /etc, files not owned by her).
+
+#Evidence of `mallory` Using `sudo` to Access Protected Files
+
+## Objective
+Demonstrate that `mallory` can use `sudo` to read and modify files outside her ownership scope, specifically in `/etc`.
+
+---
+
+##  User Context
+
+$ whoami
+mallory
+
+$ groups
+mallory sudo 
+Mallory is a member of the sudo  group.
+
+Read Access
+$ sudo cat /etc/hostname
+BRG27-Lab
+mallory successfully read a root-owned system file.
+Edit Access
+$ echo "BRG27-Lab-Updated" | sudo tee /etc/hostname BRG27-Lab-Updated 
+mallory used sudo to overwrite the file.
+
+Ownership Check
+$ ls -l /etc/hostname
+-rw-r--r-- 1 root root 18 Oct  3 21:57 /etc/hostname 
+File is owned by root; mallory accessed it via sudo.
+
+Conclusion
+mallory successfully used sudo to access and modify a protected system file not owned by her, confirming elevated privileges granted via sudo group membership.
+
+✅ 10	Folder Clean-Up Performed	Command used: rm -r /home/shared 
+• Screenshot or output confirming deletion of shared directory and its contents.
+
+Reflection Questions
+
+How do Linux permissions differ from Windows ACL?
+
+a. Linux permissions are primarily POSIX-based categorized into 3 segments  
+Owner, Group, Others
+o	Three types of access: read (r), write (w), execute (x)
+o	Permissions are compact (e.g., rwxr-xr--) and apply widely.
+•	Windows ACL (Access Control List) is a more detailed version:
+o	Each file/object can have an ACL with multiple Access Control Entries (ACEs).
+o	Allows specific rules to be assigned 
+o	More challenging, but more flexible.
+•	Linux is a simpler version whereas Windows ACLs are more detailed.
+
+b. What’s the effect of chmod 770 vs 750?
+
+The effect between chmod 770 vs 750
+Chmod 770:
+Owner: rwx (full rights)
+Group: rwx (full rights)
+Others: --- (no rights at all)
+Users in the similar group are able to edit and execute as if there were the owner.
+ chmod 750:
+Owner: rwx (full rights)
+Group: r-x (read + execute, but no write access)
+Others: --- (no rights at all)
+Group members can view only and execute but not modify.
+
+c. What is the risk of adding users to the sudo group?
+
+The risk of adding users to the sudo group not only is harmful but allowing external actors from taking control of the system.
+- Bypass of restrictions: Users can manipulate the permissions and security policies
+- Privilege escalation: Users can make errors and abuse the system by deleting system 	files that are critical for its processing.
+- Security compromised: If user account is compromised, the external actor will gain full control of the system root access.
+
+d. Why is it important to verify with `su` and `whoami`?
+“Su” command allows user to switch to another account for example from root or another user. “whoami” command displays the user identity of the current shell. It is important because it ensures that the user is running commands using the correct account. Avoid errors like unintentionally running commands that are damaging to the system. Confirming that using privilege changes works after using command such “su” and “sudo”3
+
+1. McBrien, S. (2023, January 10). Linux file permissions explained. Red Hat. https://www.redhat.com/en/blog/linux-file-permissions-explained
+2. “Permissions in Linux Explained” (2024, December 9). DITig. https://www.ditig.com/publications/permissions-in-linux 
+3. Wazan, A. S., Chadwick, D. W., Venant, R., & Laborde, R., & Benzekri, A. (2021). RootAsRole: Towards a secure alternative to sudo/su commands for home users and SME administrators. In A. Jøsang, L. Futcher, & J. Hagen (Eds.), ICT Systems Security and Privacy Protection: SEC 2021 (IFIP Advances in Information and Communication Technology, vol. 625). Springer. https://doi.org/10.1007/978-3-030-78120-0_13 
+
+
+
+
+
+
+
